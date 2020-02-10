@@ -78,7 +78,7 @@ class GeoFireCollectionRef {
 
   /// query firestore documents based on geographic [radius] from geoFirePoint [center]
   /// [field] specifies the name of the key in the document
-  Stream<List<DocumentSnapshot>> within(
+  Stream<List<DistanceDocSnapshot>> within(
       {@required GeoFirePoint center,
       @required double radius,
       @required String field,
@@ -124,7 +124,7 @@ class GeoFireCollectionRef {
         int val = (distA * 1000).toInt() - (distB * 1000).toInt();
         return val;
       });
-      return filteredList.map((element) => element.documentSnapshot).toList();
+      return filteredList;
     });
     return filtered.asBroadcastStream();
   }
